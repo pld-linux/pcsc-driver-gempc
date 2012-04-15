@@ -1,12 +1,13 @@
 Summary:	PC/SC drivers for GemPC 410 and GemPC 430 smart card readers
 Summary(pl.UTF-8):	Sterowniki PC/SC do czytników kart procesorowych GemPC 410 i GemPC 430
 Name:		pcsc-driver-gempc
-Version:	1.0.6
+Version:	1.0.7
 Release:	1
 License:	GPL v2+ (GemPC410), BSD (GemPC430)
 Group:		Libraries
 Source0:	http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/ifd-gempc-%{version}.tar.gz
-# Source0-md5:	50d3cc61b235aa3f0d2bc934689d9f6c
+# Source0-md5:	b15a2ec0cace2523106aab140a38f3e1
+Patch0:		%{name}-debug.patch
 URL:		http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/index.html
 BuildRequires:	libusb-compat-devel
 BuildRequires:	pcsc-lite-devel >= 1.2.0
@@ -70,6 +71,7 @@ przez port USB. Obsługiwane czytniki:
 
 %prep
 %setup -q -n ifd-gempc-%{version}
+%patch0 -p1
 
 %build
 CC="%{__cc}" \

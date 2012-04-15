@@ -1,0 +1,24 @@
+--- ifd-gempc-1.0.7/GemPC430/Makefile.orig	2012-04-08 21:13:22.000000000 +0200
++++ ifd-gempc-1.0.7/GemPC430/Makefile	2012-04-15 07:43:22.443482009 +0200
+@@ -37,7 +37,7 @@
+ ifd-GemPC430: common $(targets) main.o ../common/GCdebug.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(targets) $(common_targets) main.o ../common/GCdebug.o $(LIBS)
+ 
+-libGemPC430.so: common $(targets)
+-	$(CC) -shared $(CFLAGS) $(LDFLAGS) -o $@ $(targets) $(common_targets) $(LIBS)
++libGemPC430.so: common $(targets) ../common/GCdebug.o
++	$(CC) -shared $(CFLAGS) $(LDFLAGS) -o $@ $(targets) $(common_targets) ../common/GCdebug.o $(LIBS)
+ 
+ main.o: ../GemPC410/main.c
+--- ifd-gempc-1.0.7/GemPC410/Makefile.orig	2012-04-08 21:13:19.000000000 +0200
++++ ifd-gempc-1.0.7/GemPC410/Makefile	2012-04-15 07:42:55.063482581 +0200
+@@ -38,7 +38,7 @@
+ resetGemPC410: resetGemPC410.o
+ 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
+ 
+-libGemPC410.so: common $(targets)
++libGemPC410.so: common $(targets) ../common/GCdebug.o
+ 	rm -f $@
+-	$(CC) -shared $(CFLAGS) $(LDFLAGS) $(targets) $(common_targets) -o $@
++	$(CC) -shared $(CFLAGS) $(LDFLAGS) $(targets) $(common_targets) ../common/GCdebug.o -o $@
+ 	chmod -x $@
