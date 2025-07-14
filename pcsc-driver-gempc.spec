@@ -71,7 +71,7 @@ przez port USB. Obsługiwane czytniki:
 
 %prep
 %setup -q -n ifd-gempc-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 CC="%{__cc}" \
